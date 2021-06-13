@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/pclausen/fortran-test-runner)
+
 # Exercism Fortran Test Runner
 
 Docker image used for automatic testing of the Fortran track's exercises.
