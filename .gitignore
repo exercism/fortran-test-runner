@@ -1,0 +1,4 @@
+# make and testing artifacts
+build
+.vscode
+*.mod
