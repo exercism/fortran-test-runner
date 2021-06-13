@@ -38,8 +38,8 @@ echo "${slug}: testing..."
 # the makefile uses the directory name to determine the files
 cp -R "${input_dir}/" "${build_dir}" && cd "${build_dir}"
 
-cmake -DEXERCISM_TEST_SUITE=1 -DEXERCISM_RUN_ALL_TESTS=1 .
-make 2> "${compilation_errors_file_name}"
+cmake .
+cmake --build . 2> "${compilation_errors_file_name}"
 
 # In case of compilation errors the executable will not be created
 export EXERCISM_FORTRAN_JSON=1
