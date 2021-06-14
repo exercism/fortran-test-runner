@@ -53,6 +53,7 @@ else
     # build successful, now run test
     export EXERCISM_FORTRAN_JSON=1
     ctest -V
+    cp results.json $results_file
 fi
 
 cd -
