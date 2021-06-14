@@ -26,6 +26,7 @@ input_dir="${2%/}"
 output_dir="${3%/}"
 build_dir="/tmp/${slug}"
 compilation_errors_file_name="compilation-errors"
+compilation_stdout_file_name="compilation-output"
 results_file="${output_dir}/results.json"
 binary_file="${build_dir}/${slug}"
 
@@ -38,8 +39,8 @@ echo "${slug}: testing..."
 # the makefile uses the directory name to determine the files
 cp -R "${input_dir}/" "${build_dir}" && cd "${build_dir}"
 
-cmake .
-cmake --build . 2> "${compilation_errors_file_name}"
+cmake . 1> "${compilation_stdout_file_name}"
+cmake --build . 2> "${compilation_errors_file_name}" 1>> "${compilation_stdout_file_name}"
 ret=$?
 
 if [ $ret -ne 0 ]; then 
