@@ -1,1 +1,74 @@
-{"version": 2, "status": "fail", "tests": [{"name": "not_divisible_by_4", "status": "pass"}, {"name": "divisible_by_2_not_divisible_by_4", "status": "pass"}, {"name": "divisible_by_4_not_divisible_by_100", "status": "pass"}, {"name": "divisible_by_100_not_divisible_by_400", "status": "pass"}, {"name": "divisible_by_400", "status": "pass"}, {"name": "divisible_by_200_not_divisible_by_400", "status": "pass"}]}
+ {
+   "tests": [
+     { "name"  : "Test 1: stating something",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 2: shouting",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 3: shouting gibberish",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 4: asking a question",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 5: asking a numeric question",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 6: asking gibberish",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 7: talking forcefully",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 8: using acronyms in regular speech",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 9: forceful question",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 10: shouting numbers",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 11: no letters",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 12: question with no letters",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 13: shouting with special characters",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 14: shouting with no exclamation mark",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 15: statement containing question mark",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 16: non-letters with question",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 17: prattling on",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 18: silence",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 19: prolonged silence",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 20: multiple line question",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 21: starting with whitespace",
+       "status": "fail" }
+     ,
+     { "name"  : "Test 22: ending with whitespace",
+       "status": "pass" }
+     ,
+     { "name"  : "Test 23: non-question ending with whitespace",
+       "status": "fail" }
+   ],
+   "version": 2,
+   "status": "fail"
+ }
