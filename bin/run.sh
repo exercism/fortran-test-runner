@@ -40,11 +40,17 @@ cp -R "${input_dir}/" "${build_dir}" && cd "${build_dir}"
 
 cmake .
 cmake --build . 2> "${compilation_errors_file_name}"
+if [ -f "${compilation_errors_file_name}" ]; then 
+    echo -n '{"version": 2, "status": "error", "tests": [], "message": "' > $results_file
+    cat "${compilation_errors_file_name}" | tr \\n \; | sed 's/;/\\\\n/g' >> $results_file
+    echo '"' >> $results_file
+    echo '}' >> $results_file
 
-# In case of compilation errors the executable will not be created
-export EXERCISM_FORTRAN_JSON=1
-ctest -V
-
+else
+    # build successful, now run test
+    export EXERCISM_FORTRAN_JSON=1
+    ctest -V
+fi
 
 cd -
 
