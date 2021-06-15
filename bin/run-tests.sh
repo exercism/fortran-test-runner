@@ -35,8 +35,21 @@ for test_dir in tests/*; do
     diff "${results_file_path}" "${expected_results_file_path}"
 
     if [ $? -ne 0 ]; then
+        echo "RUNNER test failed for ${test_dir_name}"
+        echo "${results_file_path}" 
+        cat "${results_file_path}"
+        echo "${expected_results_file_path}" 
+        cat "${expected_results_file_path}"
         exit_code=1
+    else
+        echo "RUNNER test succeeded for ${test_dir_name}"
     fi
 done
+
+if [ ${exit_code} -eq 0 ] ;  then 
+    echo "All RUNNER TEST were succesfull"
+else
+    echo "A RUNNER TEST has FAILED!"
+fi
 
 exit ${exit_code}
