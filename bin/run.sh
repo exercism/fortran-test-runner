@@ -43,17 +43,14 @@ cmake . 1> "${compilation_stdout_file_name}"
 cmake --build . 2> "${compilation_errors_file_name}" 1>> "${compilation_stdout_file_name}"
 ret=$?
 
-if [ $ret -ne 0 ]; then 
-    echo -n '{"version": 2, "status": "error", "tests": [], "message": "' > $results_file
-    cat "${compilation_errors_file_name}" | tr \\n \; | sed 's/;/\\\\n/g' >> $results_file
-    echo '"' >> $results_file
-    echo '}' >> $results_file
-
+if [ $ret -ne 0 ]; then
+    message=$(cat "${compilation_errors_file_name}" | tr \\n \; | sed 's/;/\\\\n/g')
+    jq -n --arg m "${message}" '{version: 2, status: "error", tests: [], message: $m}' > $results_file
 else
     # build successful, now run test
     export EXERCISM_FORTRAN_JSON=1
     ctest -V
-    cp results.json $results_file
+    jq '.' results.json > $results_file
 fi
 
 cd -

@@ -1,6 +1,6 @@
 FROM alpine:3.11
 
-RUN apk add --no-cache coreutils gfortran libc-dev cmake make python3 git
+RUN apk add --no-cache coreutils jq gfortran libc-dev cmake make python3 git
 
 WORKDIR /opt/test-runner
 COPY . .
