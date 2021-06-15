@@ -27,6 +27,7 @@ output_dir="${3%/}"
 build_dir="/tmp/${slug}"
 root_dir=$(realpath $(dirname "$0")/..)
 testlib_dir="${root_dir}/testlib"
+root_cmakelist_file="${root_dir}/CMakeLists.txt"
 compilation_errors_file_name="compilation-errors"
 compilation_stdout_file_name="compilation-output"
 results_file="${output_dir}/results.json"
@@ -40,7 +41,23 @@ echo "${slug}: testing..."
 
 # Copy the solution to a directory which names matches the slug as
 # the makefile uses the directory name to determine the files
-cp -R "${input_dir}/" "${build_dir}" && cd "${build_dir}"
+cp -R "${input_dir}/" "${build_dir}"
+
+# If testlib or CMakeLists.txt file not available, download
+# This should happen in Dockerfile setup but this is usefull for testing
+if [ ! -f "${root_cmakelist_file}" ] ; then    
+    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/config/CMakeLists.txt
+fi
+if [ ! -d "${testlib_dir}" ] ; then
+    mkdir "${testlib_dir}"
+    cd "${testlib_dir}"
+    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt
+    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90
+    cd -
+fi
+cp "${root_dir}/CMakeLists.txt" "${build_dir}/CMakeLists.txt"
+
+cd "${build_dir}"
 
 # Copy the testlib which outputs a results.json file when running the tests
 cp -R "${testlib_dir}" .

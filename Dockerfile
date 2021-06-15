@@ -7,5 +7,8 @@ RUN curl -R -O https://raw.githubusercontent.com/pclausen/fortran/main/testlib/C
 RUN curl -R -O https://raw.githubusercontent.com/pclausen/fortran/main/testlib/TesterMain.f90
 
 WORKDIR /opt/test-runner
+RUN curl -R -O https://raw.githubusercontent.com/pclausen/fortran/main/config/CMakeLists.txt
+
+
 COPY . .
 ENTRYPOINT ["/opt/test-runner/bin/run.sh"]
