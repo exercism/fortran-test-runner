@@ -30,6 +30,7 @@ testlib_dir="${root_dir}/testlib"
 compilation_errors_file_name="compilation-errors"
 compilation_stdout_file_name="compilation-output"
 results_file="${output_dir}/results.json"
+build_results_file="${build_dir}/results.json"
 binary_file="${build_dir}/${slug}"
 
 # Create the output directory if it doesn't exist
@@ -50,12 +51,12 @@ ret=$?
 
 if [ $ret -ne 0 ]; then
     message=$(cat "${compilation_errors_file_name}" | tr \\n \; | sed 's/;/\\\\n/g')
-    jq -n --arg m "${message}" '{version: 2, status: "error", tests: [], message: $m}' > $results_file
+    jq -n --arg m "${message}" '{version: 2, status: "error", tests: [], message: $m}' > "${results_file}"
 else
     # build successful, now run test
     export EXERCISM_FORTRAN_JSON=1
     ctest -V
-    jq '.' results.json > $results_file
+    jq '.' "${build_results_file}" > "${results_file}"
 fi
 
 cd -
