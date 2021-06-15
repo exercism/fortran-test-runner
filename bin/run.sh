@@ -25,6 +25,8 @@ slug="$1"
 input_dir="${2%/}"
 output_dir="${3%/}"
 build_dir="/tmp/${slug}"
+root_dir=$(realpath $(dirname "$0")/..)
+testlib_dir="${root_dir}/testlib"
 compilation_errors_file_name="compilation-errors"
 compilation_stdout_file_name="compilation-output"
 results_file="${output_dir}/results.json"
@@ -38,6 +40,9 @@ echo "${slug}: testing..."
 # Copy the solution to a directory which names matches the slug as
 # the makefile uses the directory name to determine the files
 cp -R "${input_dir}/" "${build_dir}" && cd "${build_dir}"
+
+# Copy the testlib which outputs a results.json file when running the tests
+cp -R "${testlib_dir}" .
 
 cmake . 1> "${compilation_stdout_file_name}"
 cmake --build . 2> "${compilation_errors_file_name}" 1>> "${compilation_stdout_file_name}"
