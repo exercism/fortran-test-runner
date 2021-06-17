@@ -42,6 +42,7 @@ echo "${slug}: testing..."
 # Copy the solution to a directory which names matches the slug as
 # the makefile uses the directory name to determine the files
 cp -R "${input_dir}/" "${build_dir}"
+rm -rf "${build_results_file}"
 
 # If testlib or CMakeLists.txt file not available, download
 # This should happen in Dockerfile setup but this is usefull for testing
