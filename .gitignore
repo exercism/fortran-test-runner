@@ -1,0 +1,7 @@
+# make and testing artifacts
+build
+.vscode
+*.mod
+
+# Test result files
+tests/*/results.json
