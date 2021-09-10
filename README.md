@@ -28,8 +28,8 @@ In both cases you can show more informations, like Docker output, by using the f
 
 On the Fortran track we use CMake for building the exercises.
 
-[test-runner-interface]: https://github.com/exercism/automated-tests/blob/master/docs/interface.md
-[test-runner-docker]: https://github.com/exercism/automated-tests/blob/master/docs/docker.md
+[test-runner-interface]: https://exercism.org/docs/building/tooling/test-runners/interface
+[test-runner-docker]: https://exercism.org/docs/building/tooling/test-runners/docker
 [cmake]: https://cmake.org/
 [catch-lib]: https://github.com/catchorg/Catch2
 [junit]: https://junit.org/junit5/
