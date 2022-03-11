@@ -13,14 +13,14 @@ Since the test runners are deployed as Docker images the [related specification]
 To run tests:
 
 1. Open project's root in terminal
-2. Run `./test.sh`
+2. Run `./bin/run-tests.sh`
 
 This will compile and run tests for all exercises in the `tests` folder, it will fail if the output file `result.json` is different from the expected one for the exercise.
 
 If you want to run specific tests:
 
 1. Open project's root in terminal
-2. Run `./test.sh <EXERCISE_SLUG_1> <EXERCISE_SLUG_2>`
+2. Run `./bin/run.sh <EXERCISE_SLUG_1> <EXERCISE_SLUG_2>`
 
 In both cases you can show more informations, like Docker output, by using the flag `-v` or `--verbose`.
 

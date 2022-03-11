@@ -7,5 +7,5 @@ ports:
     onOpen: open-preview
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
-tasks:
-  - command: echo 'Create build directory and run build and test' && mkdir build && cd build && cmake .. && make && ctest -V && cd ..
+#tasks:
+#  - command: echo 'Create build directory and run build and test' && mkdir -p build && cd build && cmake .. && make && ctest -V && cd ..

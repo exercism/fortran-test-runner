@@ -31,6 +31,16 @@ for test_dir in tests/*; do
     #   -e "s~${test_dir_path}~/solution~g" \
     #   "${results_file_path}"
 
+    # Remove line numbers because they are different in Docker build vs local build
+    # also remove quotation marks (’‘ vs '') because they may be different on docker vs local linux
+    # But only on build error ("Makefile")
+    grep -q "Makefile" "${results_file_path}"
+    if [ $? -eq 0  ] ; then
+        message_norm=$(jq '.message' ${results_file_path} | sed 's/[0-9]*//g' | sed -e 's/["'\''’‘]//g' | sed 's/\\n//g' )
+        jq --arg message_norm "$message_norm"  '(.message |= $message_norm )' ${results_file_path} > ${results_file_path}_norm
+        cp ${results_file_path}_norm ${results_file_path} 
+        rm ${results_file_path}_norm
+    fi
     echo "${test_dir_name}: comparing results.json to expected_results.json"
     diff "${results_file_path}" "${expected_results_file_path}"
 

@@ -2,5 +2,5 @@
   "version": 2,
   "status": "error",
   "tests": [],
-  "message": "/tmp/example-empty-file/example_empty_file_test.f:::\\\\n\\\\n    |   use bob\\\\n      |      \\\\nFatal Error: Cannot open module file bob.mod for reading at (): No such file or directory\\\\ncompilation terminated.\\\\nmake[]: *** [CMakeFiles/example-empty-file.dir/build.make:: CMakeFiles/example-empty-file.dir/example_empty_file_test.f.o] Error \\\\nmake[]: *** [CMakeFiles/Makefile:: CMakeFiles/example-empty-file.dir/all] Error \\\\nmake: *** [Makefile:: all] Error \\\\n"
+  "message": "/tmp/example-empty-file/example_empty_file_test.f:::    |   use bob      |      Fatal Error: Cannot open module file bob.mod for reading at (): No such file or directorycompilation terminated.make[]: *** [CMakeFiles/example-empty-file.dir/build.make:: CMakeFiles/example-empty-file.dir/example_empty_file_test.f.o] Error make[]: *** [CMakeFiles/Makefile:: CMakeFiles/example-empty-file.dir/all] Error make: *** [Makefile:: all] Error "
 }
