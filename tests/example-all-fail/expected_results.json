@@ -148,5 +148,5 @@
    ],
    "version": 2,
    "status" : "fail",
-   "message": "Test summary: 8 of 23 tests failed",
+   "message": "Test summary: 8 of 23 tests failed"
  }
