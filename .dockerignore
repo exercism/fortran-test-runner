@@ -4,4 +4,9 @@
 .gitignore
 .gitattributes
 .dockerignore
+bin/run-in-docker.sh
+bin/run-tests-in-docker.sh
+tests/
 Dockerfile
+LICENSE
+README.md
