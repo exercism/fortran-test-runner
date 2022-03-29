@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.15
 
 RUN apk add --no-cache coreutils curl jq gfortran libc-dev cmake make python3 git
 
@@ -8,7 +8,6 @@ RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/T
 
 WORKDIR /opt/test-runner
 RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/config/CMakeLists.txt
-
 
 COPY . .
 ENTRYPOINT ["/opt/test-runner/bin/run.sh"]
