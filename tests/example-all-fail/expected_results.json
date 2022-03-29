@@ -1,74 +1,152 @@
  {
    "tests": [
-     { "name"  : "Test 1: stating something",
-       "status": "fail" }
+     {
+       "name"     : "Test 1: stating something",
+       "test_code": "Test 1: stating something",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 2: shouting",
-       "status": "pass" }
+     {
+       "name"     : "Test 2: shouting",
+       "test_code": "Test 2: shouting",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 3: shouting gibberish",
-       "status": "pass" }
+     {
+       "name"     : "Test 3: shouting gibberish",
+       "test_code": "Test 3: shouting gibberish",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 4: asking a question",
-       "status": "pass" }
+     {
+       "name"     : "Test 4: asking a question",
+       "test_code": "Test 4: asking a question",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 5: asking a numeric question",
-       "status": "pass" }
+     {
+       "name"     : "Test 5: asking a numeric question",
+       "test_code": "Test 5: asking a numeric question",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 6: asking gibberish",
-       "status": "pass" }
+     {
+       "name"     : "Test 6: asking gibberish",
+       "test_code": "Test 6: asking gibberish",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 7: talking forcefully",
-       "status": "fail" }
+     {
+       "name"     : "Test 7: talking forcefully",
+       "test_code": "Test 7: talking forcefully",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 8: using acronyms in regular speech",
-       "status": "fail" }
+     {
+       "name"     : "Test 8: using acronyms in regular speech",
+       "test_code": "Test 8: using acronyms in regular speech",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 9: forceful question",
-       "status": "pass" }
+     {
+       "name"     : "Test 9: forceful question",
+       "test_code": "Test 9: forceful question",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 10: shouting numbers",
-       "status": "pass" }
+     {
+       "name"     : "Test 10: shouting numbers",
+       "test_code": "Test 10: shouting numbers",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 11: no letters",
-       "status": "fail" }
+     {
+       "name"     : "Test 11: no letters",
+       "test_code": "Test 11: no letters",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 12: question with no letters",
-       "status": "pass" }
+     {
+       "name"     : "Test 12: question with no letters",
+       "test_code": "Test 12: question with no letters",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 13: shouting with special characters",
-       "status": "pass" }
+     {
+       "name"     : "Test 13: shouting with special characters",
+       "test_code": "Test 13: shouting with special characters",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 14: shouting with no exclamation mark",
-       "status": "pass" }
+     {
+       "name"     : "Test 14: shouting with no exclamation mark",
+       "test_code": "Test 14: shouting with no exclamation mark",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 15: statement containing question mark",
-       "status": "fail" }
+     {
+       "name"     : "Test 15: statement containing question mark",
+       "test_code": "Test 15: statement containing question mark",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 16: non-letters with question",
-       "status": "pass" }
+     {
+       "name"     : "Test 16: non-letters with question",
+       "test_code": "Test 16: non-letters with question",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 17: prattling on",
-       "status": "pass" }
+     {
+       "name"     : "Test 17: prattling on",
+       "test_code": "Test 17: prattling on",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 18: silence",
-       "status": "pass" }
+     {
+       "name"     : "Test 18: silence",
+       "test_code": "Test 18: silence",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 19: prolonged silence",
-       "status": "pass" }
+     {
+       "name"     : "Test 19: prolonged silence",
+       "test_code": "Test 19: prolonged silence",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 20: multiple line question",
-       "status": "fail" }
+     {
+       "name"     : "Test 20: multiple line question",
+       "test_code": "Test 20: multiple line question",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 21: starting with whitespace",
-       "status": "fail" }
+     {
+       "name"     : "Test 21: starting with whitespace",
+       "test_code": "Test 21: starting with whitespace",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
      ,
-     { "name"  : "Test 22: ending with whitespace",
-       "status": "pass" }
+     {
+       "name"     : "Test 22: ending with whitespace",
+       "test_code": "Test 22: ending with whitespace",
+       "status"   : "pass"
+     }
      ,
-     { "name"  : "Test 23: non-question ending with whitespace",
-       "status": "fail" }
+     {
+       "name"     : "Test 23: non-question ending with whitespace",
+       "test_code": "Test 23: non-question ending with whitespace",
+       "status"   : "fail",
+       "message"  : "Expected < Whatever. > but got < Whatever. THIS IS A FAILING TEST >"
+     }
    ],
    "version": 2,
-   "status": "fail"
+   "status" : "fail",
+   "message": "Test summary: 8 of 23 tests failed",
  }
