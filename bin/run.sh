@@ -70,7 +70,7 @@ ret=$?
 if [ $ret -ne 0 ]; then
     # remove line numbers because they are diffrent in Docker build vs local build
     # also remove quotation marks (’‘ vs '') because they may be different on docker vs local linux
-    message=$(cat "${compilation_errors_file_name}" | sed 's/[0-9]*//g' | sed -e 's/["'\''’‘]//g' | tr \\n \; | sed 's/;/\\\\n/g')
+    message=$(cat "${compilation_errors_file_name}" | sed 's/[0-9]*//g' | sed -e 's/["'\''’‘]//g' | tr \\n \; | sed 's/;/\n/g')
     jq -n --arg m "${message}" '{version: 2, status: "error", tests: [], message: $m}' > "${build_results_file}"
 else
     # build successful, now run test
