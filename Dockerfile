@@ -2,6 +2,9 @@ FROM alpine:3.15 AS build
 
 RUN apk add --no-cache curl
 
+WORKDIR /opt/test-runner
+COPY bust_cache .
+
 WORKDIR /opt/test-runner/testlib
 RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt
 RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90
