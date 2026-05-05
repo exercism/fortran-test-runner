@@ -1,4 +1,4 @@
-FROM alpine:3.15 AS build
+FROM alpine:3.23 AS build
 
 RUN apk add --no-cache curl
 
@@ -12,7 +12,7 @@ RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/T
 WORKDIR /opt/test-runner
 RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/config/CMakeLists.txt
 
-FROM alpine:3.15
+FROM alpine:3.23
 
 RUN apk add --no-cache coreutils jq gfortran libc-dev cmake make
 
