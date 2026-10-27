@@ -10,7 +10,7 @@ RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/C
 RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90
 
 WORKDIR /opt/test-runner
-RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/config/CMakeLists.txt
+RUN curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/exercises/shared/CMakeLists.txt
 
 FROM alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
 
