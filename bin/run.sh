@@ -47,7 +47,7 @@ rm -rf "${build_results_file}"
 # If testlib or CMakeLists.txt file not available, download
 # This should happen in Dockerfile setup but this is usefull for testing
 if [ ! -f "${root_cmakelist_file}" ] ; then    
-    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/config/CMakeLists.txt
+    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/exercises/shared/CMakeLists.txt
 fi
 if [ ! -d "${testlib_dir}" ] ; then
     mkdir "${testlib_dir}"
