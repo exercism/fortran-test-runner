@@ -26,7 +26,8 @@ In both cases you can show more informations, like Docker output, by using the f
 
 # How it works
 
-On the Fortran track we use CMake for building the exercises.
+On the Fortran track students use CMake to build the exercises.
+The test runner calls gfortran directly, with the same options as the track's `CMakeLists.txt`, and links each solution with the testlib compiled at image build.
 
 [test-runner-interface]: https://exercism.org/docs/building/tooling/test-runners/interface
 [test-runner-docker]: https://exercism.org/docs/building/tooling/test-runners/docker
