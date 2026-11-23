@@ -27,44 +27,36 @@ output_dir="${3%/}"
 build_dir="/tmp/${slug}"
 root_dir=$(realpath $(dirname "$0")/..)
 testlib_dir="${root_dir}/testlib"
-root_cmakelist_file="${root_dir}/CMakeLists.txt"
 compilation_errors_file_name="compilation-errors"
-compilation_stdout_file_name="compilation-output"
 results_file="${output_dir}/results.json"
 build_results_file="${build_dir}/results.json"
-binary_file="${build_dir}/${slug}"
+file=$(echo "${slug}" | tr '-' '_')
+
+# The same compiler options as the track's CMakeLists.txt sets for a Debug
+# build with GFortran.
+fortran_flags="-g -std=f2008 -W -Wall -Wextra -pedantic -fbacktrace"
 
 # Create the output directory if it doesn't exist
 mkdir -p "${output_dir}"
 
 echo "${slug}: testing..."
 
-# Copy the solution to a directory which names matches the slug as
-# the makefile uses the directory name to determine the files
+# Copy the solution to a directory named after the slug, as the track's
+# CMake build does.
 cp -R "${input_dir}/" "${build_dir}"
 rm -rf "${build_results_file}"
 
-# If testlib or CMakeLists.txt file not available, download
-# This should happen in Dockerfile setup but this is usefull for testing
-if [ ! -f "${root_cmakelist_file}" ] ; then    
-    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/exercises/shared/CMakeLists.txt
-fi
-if [ ! -d "${testlib_dir}" ] ; then
-    mkdir "${testlib_dir}"
-    cd "${testlib_dir}"
-    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/CMakeLists.txt
-    curl -R -O https://raw.githubusercontent.com/exercism/fortran/main/testlib/TesterMain.f90
-    cd -
-fi
-cp "${root_dir}/CMakeLists.txt" "${build_dir}/CMakeLists.txt"
-
 cd "${build_dir}"
 
-# Copy the testlib which outputs a results.json file when running the tests
-cp -R "${testlib_dir}" .
-
-cmake . 1> "${compilation_stdout_file_name}"
-cmake --build . 2> "${compilation_errors_file_name}" 1>> "${compilation_stdout_file_name}"
+# Compile the solution and the tests with gfortran directly, and link them with
+# the testlib object compiled at image build. This does what the track's
+# CMakeLists.txt does, without CMake's configure step and make's dependency
+# scanning, which took most of each run.
+{
+    gfortran ${fortran_flags} -I "${testlib_dir}" -c "${build_dir}/${file}.f90" &&
+    gfortran ${fortran_flags} -I "${testlib_dir}" -c "${build_dir}/${file}_test.f90" &&
+    gfortran -g "${file}.o" "${file}_test.o" "${testlib_dir}/TesterMain.o" -o "${slug}"
+} 2> "${compilation_errors_file_name}"
 ret=$?
 
 if [ $ret -ne 0 ]; then
@@ -74,8 +66,7 @@ if [ $ret -ne 0 ]; then
     jq -n --arg m "${message}" '{version: 2, status: "error", tests: [], message: $m}' > "${build_results_file}"
 else
     # build successful, now run test
-    export EXERCISM_FORTRAN_JSON=1
-    ctest -V    
+    EXERCISM_FORTRAN_JSON=1 "./${slug}"
 fi
 
 cp "${build_results_file}"  "${results_file}"
